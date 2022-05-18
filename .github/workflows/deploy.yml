@@ -1,9 +1,7 @@
-name: Continuous Integration & Deployment
+name: Publish to NPM && Deploy to Vercel
 
 on:
   push:
-    branches:
-      - main
     paths:
       - 'package.json'
 
