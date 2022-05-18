@@ -1,9 +1,9 @@
 {
   "name": "react-tablerui",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "React components based in Tabler UI",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && cp package.json dist/package.json",
     "test": "jest"
   },
   "author": "Ángel Quiroz",
@@ -44,7 +44,7 @@
   ],
   "types": "dist/index.d.ts",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/angelalexqc"
+    "registry": "https://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
