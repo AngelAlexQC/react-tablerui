@@ -1,4 +1,4 @@
-name: Node.js Package
+name: Continuous Integration & Deployment
 
 on:
   push:
