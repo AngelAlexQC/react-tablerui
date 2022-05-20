@@ -5,29 +5,32 @@ import Button, { ButtonType } from './Button';
 
 describe('Button', () => {
   test('renders the Button component', () => {
-    render(<Button content="Hello world!" type={ButtonType.primary} />);
+    render(
+      <Button type={ButtonType.primary} disabled={true}>
+        Hello world!
+      </Button>,
+    );
+    expect(screen.getByText('Hello world!')).toBeInTheDocument();
   });
 
   test('Check if the button is disabled', () => {
     render(
-      <Button
-        content="Hello world!"
-        type={ButtonType.secondary}
-        disabled={true}
-      />,
+      <Button type={ButtonType.secondary} disabled={true}>
+        Hello world!
+      </Button>,
     );
+    expect(screen.getByText('Hello world!')).toBeInTheDocument();
     expect(screen.getByRole('button')).toBeDisabled();
   });
 
   test('Check onClick function', () => {
     const onClick = jest.fn();
     render(
-      <Button
-        content="Hello world!"
-        type={ButtonType.primary}
-        onClick={onClick}
-      />,
+      <Button type={ButtonType.primary} onClick={onClick}>
+        Hello world!
+      </Button>,
     );
+    expect(screen.getByText('Hello world!')).toBeInTheDocument();
     screen.getByRole('button').click();
     expect(onClick).toHaveBeenCalled();
   });

@@ -49,18 +49,19 @@ export enum ButtonVariant {
 }
 
 export interface ButtonProps {
-  content: ReactNode;
-  type: ButtonType;
+  children: ReactNode;
+  type?: ButtonType;
   size?: ButtonSize;
   variant?: ButtonVariant;
   active?: boolean;
   disabled?: boolean;
   isGhost?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  href?: string;
 }
 
 const Button: FunctionComponent<ButtonProps> = ({
-  content,
+  children,
   type,
   size,
   variant,
@@ -68,19 +69,25 @@ const Button: FunctionComponent<ButtonProps> = ({
   disabled,
   isGhost,
   onClick,
+  href,
 }) => {
-  return (
+  const classNames = `btn${type ? ` ${type}` : ''}${size ? ` ${size}` : ''}${
+    variant ? ` ${variant}` : ''
+  }${active ? ' active' : ''}${disabled ? ' disabled' : ''}${
+    isGhost ? ' btn-ghost' : ''
+  }`;
+  return href ? (
+    <a href={href} className={classNames}>
+      {children}
+    </a>
+  ) : (
     <button
-      className={`btn${type ? ` ${type}` : ''}${size ? ` ${size}` : ''}${
-        variant ? ` ${variant}` : ''
-      }${active ? ' active' : ''}${disabled ? ' disabled' : ''}${
-        isGhost ? ' btn-ghost' : ''
-      }`}
+      className={classNames}
       type="button"
       disabled={disabled}
       onClick={onClick}
     >
-      {content}
+      {children}
     </button>
   );
 };

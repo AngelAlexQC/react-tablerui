@@ -5,3 +5,5 @@ export {
   ButtonType,
   ButtonVariant,
 } from './Button';
+
+export { default as Navbar, NavbarProps, Brand, BrandProps } from './Navbar';
