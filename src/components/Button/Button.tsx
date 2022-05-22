@@ -58,6 +58,7 @@ export interface ButtonProps {
   isGhost?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   href?: string;
+  className?: string;
 }
 
 const Button: FunctionComponent<ButtonProps> = ({
@@ -70,12 +71,13 @@ const Button: FunctionComponent<ButtonProps> = ({
   isGhost,
   onClick,
   href,
+  className,
 }) => {
   const classNames = `btn${type ? ` ${type}` : ''}${size ? ` ${size}` : ''}${
     variant ? ` ${variant}` : ''
   }${active ? ' active' : ''}${disabled ? ' disabled' : ''}${
     isGhost ? ' btn-ghost' : ''
-  }`;
+  }${className ? ` ${className}` : ''}`;
   return href ? (
     <a href={href} className={classNames}>
       {children}
